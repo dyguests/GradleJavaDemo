@@ -1,4 +1,11 @@
 //第一个构建脚本
+//task hello {
+//    doLast {
+//        println 'Hello world!'
+//    }
+//}
+
+//第一个构建脚本
 //快速定义任务
 //用一种更简洁的方式来定义上面的 hello 任务。
 task hello << {
@@ -43,3 +50,58 @@ task taskY << {
 //一旦任务被创建后，任务之间可以通过 API 进行相互访问。这也是与 Ant 的不同之处。比如可以增加一些依赖。
 task0.dependsOn task2, task3
 
+//通过 API 进行任务之间的通信 - 增加任务行为
+hello.doFirst {
+    println 'Hello Venus'
+}
+hello.doLast {
+    println 'Hello Mars'
+}
+hello << {
+    println 'Hello Jupiter'
+}
+
+hello.doLast {
+    println "Greetings from the $hello.name task."
+}
+
+task myTask {
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties << {
+    println myTask.myProperty
+}
+
+//调用 Ant 任务
+// ...略
+
+//方法抽取
+// ...略
+
+//定义默认任务
+defaultTasks 'clean', 'run'
+task clean << {
+    println 'Default Cleaning!'
+}
+task run << {
+    println 'Default Running!'
+}
+task other << {
+    println "I'm not a default task!"
+}
+
+//依赖任务的不同输出
+task distribution << {
+    println "We build the zip with version=$version"
+}
+task release(dependsOn: 'distribution') << {
+    println 'We release now'
+}
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+}
