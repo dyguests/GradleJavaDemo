@@ -1,9 +1,9 @@
 //group 'com.fanhl'
-//version '1.0-SNAPSHOT'
+version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-//sourceCompatibility = 1.8
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
