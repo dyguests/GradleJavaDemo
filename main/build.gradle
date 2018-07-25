@@ -1,21 +1,30 @@
+//第一个构建脚本
+//快速定义任务
+//用一种更简洁的方式来定义上面的 hello 任务。
 task hello << {
     println 'Hello world!'
 }
 
+//代码即脚本
+//Gradle 脚本采用 Groovy 书写，作为开胃菜,看下下面这个例子。
 task upper << {
     def someString = 'mY_nAmE'
     println "Original: " + someString
     println "Upper case: " + someString.toUpperCase()
 }
 
+//在 gradle 任务中采用 groovy
 task count << {
     4.times { print "$it " }
 }
 
+//任务依赖
+//你可以按如下方式创建任务间的依赖关系
 task intro(dependsOn: hello) << {
     println "I'm Gradle"
 }
 
+//延迟依赖
 task taskX(dependsOn: 'taskY') << {
     println 'taskX'
 }
@@ -23,8 +32,14 @@ task taskY << {
     println 'taskY'
 }
 
+//动态任务
+//借助 Groovy 的强大不仅可以定义简单任务还能做更多的事。例如，可以动态定义任务。
 4.times { counter ->
     task "task$counter" << {
         println "I'm task number $counter"
     }
 }
+
+//一旦任务被创建后，任务之间可以通过 API 进行相互访问。这也是与 Ant 的不同之处。比如可以增加一些依赖。
+task0.dependsOn task2, task3
+
