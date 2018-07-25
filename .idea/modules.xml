@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_tructure_introduction.iml" filepath="$PROJECT_DIR$/.idea/modules/java_tructure_introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_tructure_introduction_main.iml" filepath="$PROJECT_DIR$/.idea/modules/java_tructure_introduction_main.iml" group="java_tructure_introduction" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_tructure_introduction_test.iml" filepath="$PROJECT_DIR$/.idea/modules/java_tructure_introduction_test.iml" group="java_tructure_introduction" />
       <module fileurl="file://$PROJECT_DIR$/structure_base/structure_base.iml" filepath="$PROJECT_DIR$/structure_base/structure_base.iml" />
     </modules>
   </component>
